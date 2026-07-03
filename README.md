@@ -2,7 +2,7 @@
 
 Inject Ref 提供两个独立插件：一个用于 VS Code，一个用于 JetBrains WebStorm。
 
-它们提供同一个命令：`Copy AI Relative Path`。执行后会复制当前文件的项目相对路径，并在前面加上 `@`：
+它们提供同一个命令：`Copy AI Relative Path`。执行后会复制当前文件或目录的项目相对路径，并在前面加上 `@`：
 
 ```text
 @src/components/Button.tsx
@@ -28,13 +28,13 @@ Inject Ref 提供两个独立插件：一个用于 VS Code，一个用于 JetBra
 2. 搜索 `Copy AI Relative Path`。
 3. 绑定你原本用于“复制相对路径”的快捷键。
 
-插件也会在 Explorer 文件右键菜单中提供 `Copy AI Relative Path`。
+插件也会在 Explorer 右键菜单中提供 `Copy AI Relative Path`。
 
 ## WebStorm 使用
 
 安装 WebStorm 插件后：
 
-1. 在 Project 视图或编辑器中选择文件。
+1. 在 Project 视图或编辑器中选择文件或目录。
 2. 执行 `Copy AI Relative Path`。
 3. 剪贴板会得到 `@` 开头的项目相对路径。
 

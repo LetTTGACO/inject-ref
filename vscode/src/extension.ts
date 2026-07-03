@@ -3,7 +3,7 @@ import { toAiReference } from './reference';
 import { shouldRejectCopyRequest } from './selection';
 
 const COMMAND_ID = 'inject-ref.copyAiRelativePath';
-const ERROR_MESSAGE = '无法复制 AI 相对路径：请先选择项目内文件。';
+const ERROR_MESSAGE = '无法复制 AI 相对路径：请先选择项目内文件或目录。';
 
 export function activate(context: vscode.ExtensionContext): void {
   const disposable = vscode.commands.registerCommand(COMMAND_ID, async (uri?: vscode.Uri, selectedUris?: vscode.Uri[]) => {
@@ -20,9 +20,7 @@ export function activate(context: vscode.ExtensionContext): void {
       return;
     }
 
-    const isDirectory = (await vscode.workspace.fs.stat(targetUri)).type === vscode.FileType.Directory;
-
-    if (shouldRejectCopyRequest({ selectedCount, isDirectory })) {
+    if (shouldRejectCopyRequest({ selectedCount, isDirectory: false })) {
       vscode.window.showErrorMessage(ERROR_MESSAGE);
       return;
     }

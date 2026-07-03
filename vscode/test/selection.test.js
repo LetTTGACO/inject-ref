@@ -7,8 +7,8 @@ test('rejects explorer multi-select', () => {
   assert.equal(shouldRejectCopyRequest({ selectedCount: 2, isDirectory: false }), true);
 });
 
-test('rejects directories', () => {
-  assert.equal(shouldRejectCopyRequest({ selectedCount: 1, isDirectory: true }), true);
+test('allows a single directory', () => {
+  assert.equal(shouldRejectCopyRequest({ selectedCount: 1, isDirectory: true }), false);
 });
 
 test('allows a single file', () => {

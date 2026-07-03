@@ -3,7 +3,9 @@ package dev.injectref;
 import org.junit.Test;
 
 import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertTrue;
 
 public class CopyAiRelativePathActionTest {
     @Test
@@ -34,5 +36,15 @@ public class CopyAiRelativePathActionTest {
         String editor = new String("editor");
 
         assertSame(editor, CopyAiRelativePathAction.resolveValue(new String[0], null, editor));
+    }
+
+    @Test
+    public void allowsDirectoryTargets() {
+        assertFalse(CopyAiRelativePathAction.shouldRejectTarget(true, true));
+    }
+
+    @Test
+    public void rejectsMissingTargets() {
+        assertTrue(CopyAiRelativePathAction.shouldRejectTarget(false, false));
     }
 }

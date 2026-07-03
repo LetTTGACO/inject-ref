@@ -3,6 +3,6 @@ export interface CopyRequestState {
   isDirectory: boolean;
 }
 
-export function shouldRejectCopyRequest({ selectedCount, isDirectory }: CopyRequestState): boolean {
-  return isDirectory || selectedCount > 1;
+export function shouldRejectCopyRequest({ selectedCount }: CopyRequestState): boolean {
+  return selectedCount > 1;
 }

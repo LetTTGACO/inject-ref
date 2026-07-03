@@ -12,14 +12,14 @@ import com.intellij.openapi.vfs.VirtualFile;
 import java.awt.datatransfer.StringSelection;
 
 public class CopyAiRelativePathAction extends AnAction {
-    private static final String ERROR_MESSAGE = "无法复制 AI 相对路径：请先选择项目内文件。";
+    private static final String ERROR_MESSAGE = "无法复制 AI 相对路径：请先选择项目内文件或目录。";
 
     @Override
     public void actionPerformed(AnActionEvent event) {
         Project project = event.getProject();
         VirtualFile file = resolveFile(event);
 
-        String reference = project == null || file == null || file.isDirectory()
+        String reference = project == null || shouldRejectTarget(file != null, file != null && file.isDirectory())
             ? null
             : ReferenceFormatter.formatAbsolutePath(project.getBasePath(), file.getPath());
 
@@ -35,7 +35,7 @@ public class CopyAiRelativePathAction extends AnAction {
     public void update(AnActionEvent event) {
         Project project = event.getProject();
         VirtualFile file = resolveFile(event);
-        event.getPresentation().setEnabledAndVisible(project != null && file != null && !file.isDirectory());
+        event.getPresentation().setEnabledAndVisible(project != null && !shouldRejectTarget(file != null, file != null && file.isDirectory()));
     }
 
     static VirtualFile resolveFile(AnActionEvent event) {
@@ -68,5 +68,9 @@ public class CopyAiRelativePathAction extends AnAction {
         }
 
         return fallbackValue;
+    }
+
+    static boolean shouldRejectTarget(boolean hasTarget, boolean isDirectory) {
+        return !hasTarget;
     }
 }
