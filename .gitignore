@@ -3,5 +3,6 @@ vscode/out/
 vscode/*.vsix
 jetbrains/.gradle/
 jetbrains/build/
+jetbrains/.intellijPlatform/
 jetbrains/.idea/
 *.iml
