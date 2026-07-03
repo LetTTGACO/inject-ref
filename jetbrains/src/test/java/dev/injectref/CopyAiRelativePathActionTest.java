@@ -2,6 +2,8 @@ package dev.injectref;
 
 import org.junit.Test;
 
+import java.util.List;
+
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertSame;
@@ -13,7 +15,7 @@ public class CopyAiRelativePathActionTest {
         String first = new String("first");
         String second = new String("second");
 
-        assertNull(CopyAiRelativePathAction.resolveValue(new String[] { first, second }, null, null));
+        assertNull(CopyAiRelativePathAction.resolveValue(List.of(), new String[] { first, second }, null, null));
     }
 
     @Test
@@ -21,37 +23,45 @@ public class CopyAiRelativePathActionTest {
         String selected = new String("selected");
         String fallback = new String("fallback");
 
-        assertSame(selected, CopyAiRelativePathAction.resolveValue(new String[] { selected }, "ignored", fallback));
+        assertSame(selected, CopyAiRelativePathAction.resolveValue(List.of(), new String[] { selected }, "ignored", fallback));
     }
 
     @Test
     public void fallsBackToSelectedFileWhenArrayIsMissing() {
         String selected = new String("selected");
 
-        assertSame(selected, CopyAiRelativePathAction.resolveValue(null, selected, "editor"));
+        assertSame(selected, CopyAiRelativePathAction.resolveValue(List.of(), null, selected, "editor"));
     }
 
     @Test
     public void fallsBackToEditorFileWhenSelectionArrayIsEmpty() {
         String editor = new String("editor");
 
-        assertSame(editor, CopyAiRelativePathAction.resolveValue(new String[0], null, editor));
+        assertSame(editor, CopyAiRelativePathAction.resolveValue(List.of(), new String[0], null, editor));
     }
 
     @Test
-    public void fallsBackToProjectViewPsiSelectionWhenVirtualFileDataIsMissing() {
-        String selected = new String("psi-selected");
-        String editor = new String("editor");
+    public void usesSingleCopyReferenceElementBeforeVirtualFileData() {
+        String selected = new String("copy-reference-selected");
+        String fallback = new String("fallback");
 
-        assertSame(selected, CopyAiRelativePathAction.resolveValue(null, null, new String[] { selected }, null, editor));
+        assertSame(selected, CopyAiRelativePathAction.resolveValue(List.of(selected), new String[] { fallback }, "ignored", "editor"));
     }
 
     @Test
-    public void rejectsMultipleProjectViewPsiSelections() {
+    public void rejectsMultipleCopyReferenceElements() {
         String first = new String("first");
         String second = new String("second");
+        String editor = new String("editor");
 
-        assertNull(CopyAiRelativePathAction.resolveValue(null, null, new String[] { first, second }, null, "editor"));
+        assertNull(CopyAiRelativePathAction.resolveValue(List.of(first, second), null, null, editor));
+    }
+
+    @Test
+    public void fallsBackWhenCopyReferenceElementsAreMissing() {
+        String selected = new String("selected");
+
+        assertSame(selected, CopyAiRelativePathAction.resolveValue(null, new String[] { selected }, null, "editor"));
     }
 
     @Test

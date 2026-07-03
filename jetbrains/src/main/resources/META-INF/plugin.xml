@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>dev.injectref</id>
     <name>Inject Ref</name>
-    <version>0.1.1</version>
+    <version>0.1.2</version>
     <vendor>inject-ref</vendor>
     <description>复制适合 AI 引用的项目相对路径。</description>
     <idea-version since-build="261"/>
