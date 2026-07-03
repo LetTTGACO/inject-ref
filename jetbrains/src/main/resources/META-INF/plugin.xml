@@ -1,0 +1,20 @@
+<idea-plugin>
+    <id>dev.injectref</id>
+    <name>Inject Ref</name>
+    <version>0.1.0</version>
+    <vendor>inject-ref</vendor>
+    <description>复制适合 AI 引用的项目相对路径。</description>
+    <idea-version since-build="261"/>
+
+    <depends>com.intellij.modules.platform</depends>
+
+    <actions>
+        <action id="InjectRef.CopyAiRelativePath"
+                class="dev.injectref.CopyAiRelativePathAction"
+                text="Copy AI Relative Path"
+                description="Copy project-relative path with @ prefix">
+            <add-to-group group-id="ProjectViewPopupMenu" anchor="last"/>
+            <add-to-group group-id="EditorPopupMenu" anchor="last"/>
+        </action>
+    </actions>
+</idea-plugin>
