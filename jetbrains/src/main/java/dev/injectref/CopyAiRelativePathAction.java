@@ -38,19 +38,35 @@ public class CopyAiRelativePathAction extends AnAction {
         event.getPresentation().setEnabledAndVisible(project != null && file != null && !file.isDirectory());
     }
 
-    private static VirtualFile resolveFile(AnActionEvent event) {
+    static VirtualFile resolveFile(AnActionEvent event) {
+        VirtualFile[] selectedFiles = event.getData(CommonDataKeys.VIRTUAL_FILE_ARRAY);
         VirtualFile selectedFile = event.getData(CommonDataKeys.VIRTUAL_FILE);
-
-        if (selectedFile != null) {
-            return selectedFile;
-        }
+        VirtualFile editorFile = null;
 
         var editor = event.getData(CommonDataKeys.EDITOR);
 
-        if (editor == null) {
-            return null;
+        if (editor != null) {
+            editorFile = FileDocumentManager.getInstance().getFile(editor.getDocument());
         }
 
-        return FileDocumentManager.getInstance().getFile(editor.getDocument());
+        return resolveValue(selectedFiles, selectedFile, editorFile);
+    }
+
+    static <T> T resolveValue(T[] selectedValues, T selectedValue, T fallbackValue) {
+        if (selectedValues != null) {
+            if (selectedValues.length > 1) {
+                return null;
+            }
+
+            if (selectedValues.length == 1) {
+                return selectedValues[0];
+            }
+        }
+
+        if (selectedValue != null) {
+            return selectedValue;
+        }
+
+        return fallbackValue;
     }
 }
