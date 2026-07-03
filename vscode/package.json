@@ -1,0 +1,44 @@
+{
+  "name": "inject-ref-vscode",
+  "displayName": "Inject Ref",
+  "description": "复制适合 AI 引用的项目相对路径。",
+  "version": "0.1.0",
+  "publisher": "inject-ref",
+  "engines": {
+    "vscode": "^1.125.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:inject-ref.copyAiRelativePath"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "inject-ref.copyAiRelativePath",
+        "title": "Copy AI Relative Path",
+        "category": "Inject Ref"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "inject-ref.copyAiRelativePath",
+          "when": "resourceScheme == file",
+          "group": "navigation"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "test": "npm run compile && node --test test/*.test.js",
+    "package": "npm run compile"
+  },
+  "devDependencies": {
+    "@types/vscode": "1.125.0",
+    "typescript": "6.0.3"
+  }
+}

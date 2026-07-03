@@ -1,0 +1,7 @@
+node_modules/
+vscode/out/
+vscode/*.vsix
+jetbrains/.gradle/
+jetbrains/build/
+jetbrains/.idea/
+*.iml
