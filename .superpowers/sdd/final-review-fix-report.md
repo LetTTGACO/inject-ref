@@ -1,2 +1,0 @@
-- 2026-07-04: Fixed `vscode/` copy command to reject Explorer multi-selects and directory targets before copying; added a small pure helper test for the selection rule.
-- 2026-07-04: Fixed `jetbrains/` copy action to reject Project View multi-selects, keep single-file selection, and fall back to `VIRTUAL_FILE` then editor file; added a pure selection-resolution test.
