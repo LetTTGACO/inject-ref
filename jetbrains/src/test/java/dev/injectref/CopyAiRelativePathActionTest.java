@@ -39,6 +39,22 @@ public class CopyAiRelativePathActionTest {
     }
 
     @Test
+    public void fallsBackToProjectViewPsiSelectionWhenVirtualFileDataIsMissing() {
+        String selected = new String("psi-selected");
+        String editor = new String("editor");
+
+        assertSame(selected, CopyAiRelativePathAction.resolveValue(null, null, new String[] { selected }, null, editor));
+    }
+
+    @Test
+    public void rejectsMultipleProjectViewPsiSelections() {
+        String first = new String("first");
+        String second = new String("second");
+
+        assertNull(CopyAiRelativePathAction.resolveValue(null, null, new String[] { first, second }, null, "editor"));
+    }
+
+    @Test
     public void allowsDirectoryTargets() {
         assertFalse(CopyAiRelativePathAction.shouldRejectTarget(true, true));
     }

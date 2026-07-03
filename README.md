@@ -45,6 +45,10 @@ Inject Ref 提供两个独立插件：一个用于 VS Code，一个用于 JetBra
 3. 搜索 `Copy AI Relative Path`。
 4. 绑定你原本用于“复制相对路径”的快捷键。
 
+使用快捷键时，需要先让 Project 视图中的文件或目录处于选中状态，并且当前焦点在 Project 视图或对应编辑器上下文中。仅把鼠标悬停在左侧文件树上，不会改变 WebStorm 的快捷键上下文。
+
+如果这个快捷键同时绑定在 WebStorm 原生的复制路径动作上，请在 Keymap 的冲突提示中移除或改绑原来的动作，只保留 `Copy AI Relative Path`。
+
 ## 不做什么
 
 - 不监听剪贴板。
