@@ -7,3 +7,11 @@ export function toAiReference(relativePath: string): string | undefined {
 
   return `@${normalized}`;
 }
+
+export function toSingleAiReference(copiedRelativePath: string): string | undefined {
+  if (copiedRelativePath.includes('\n') || copiedRelativePath.includes('\r')) {
+    return undefined;
+  }
+
+  return toAiReference(copiedRelativePath);
+}

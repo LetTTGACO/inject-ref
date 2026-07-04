@@ -30,6 +30,8 @@ Inject Ref 提供两个独立插件：一个用于 VS Code，一个用于 JetBra
 
 插件也会在 Explorer 右键菜单中提供 `Copy AI Relative Path`。
 
+在 Explorer 里使用快捷键时，需要先让 Explorer 中的文件或目录处于选中状态。此时插件会复用 VS Code 原生 `Copy Relative Path` 的选择逻辑，再把结果改写为 `@` 开头的引用。
+
 ## WebStorm 使用
 
 安装 WebStorm 插件后：

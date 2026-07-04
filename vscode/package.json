@@ -2,7 +2,7 @@
   "name": "inject-ref-vscode",
   "displayName": "Inject Ref",
   "description": "复制适合 AI 引用的项目相对路径。",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "publisher": "inject-ref",
   "engines": {
     "vscode": "^1.125.0"
@@ -27,7 +27,7 @@
         {
           "command": "inject-ref.copyAiRelativePath",
           "when": "resourceScheme == file",
-          "group": "navigation"
+          "group": "6_copypath@30"
         }
       ]
     }
