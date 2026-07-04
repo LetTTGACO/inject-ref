@@ -46,13 +46,13 @@ npx @vscode/vsce package
 完成后会在 `vscode/` 目录生成 `.vsix` 文件，例如：
 
 ```text
-inject-ref-vscode-0.1.2.vsix
+inject-ref-vscode-0.1.3.vsix
 ```
 
 安装方式二选一：
 
 ```bash
-code --install-extension inject-ref-vscode-0.1.2.vsix
+code --install-extension inject-ref-vscode-0.1.3.vsix
 ```
 
 或者在 VS Code 的 Extensions 面板中选择 `Install from VSIX...`，再选择生成的 `.vsix` 文件。
