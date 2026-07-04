@@ -2,10 +2,12 @@
 
 Inject Ref 提供两个独立插件：一个用于基于 VS Code 开发的 IDE（例如 Cursor、Trae等)，一个用于 JetBrains 系列 IDE。
 
-它们提供同一个命令：`Copy AI Relative Path`。执行后会复制当前文件或目录的项目相对路径，并在前面加上 `@`：
+它们提供同一个命令：`Copy AI Relative Path`。执行后会复制当前文件或目录的项目相对路径，并在前面加上 `@`；如果路径以 `.` 开头(这些文件一般是被忽略的本地文件，Agent 工具不会自动识别，强行加反而可能会造成额外的烦恼)，则保持原样
 
 ```text
 @src/components/Button.tsx
+.env
+.local/runbooks/release.md
 ```
 
 ## 为什么做这个插件
@@ -85,7 +87,7 @@ cd jetbrains
 
 1. 打开 Command Palette。
 2. 搜索 `Copy AI Relative Path`。
-3. 执行命令后，剪贴板会得到 `@` 开头的项目相对路径。
+3. 执行命令后，剪贴板会得到处理后的项目相对路径。
 
 绑定快捷键：
 
@@ -103,7 +105,7 @@ cd jetbrains
 
 1. 在 Project 视图或编辑器中选择文件或目录。
 2. 执行 `Copy AI Relative Path`。
-3. 剪贴板会得到 `@` 开头的项目相对路径。
+3. 剪贴板会得到处理后的项目相对路径。
 
 绑定快捷键：
 

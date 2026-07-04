@@ -17,6 +17,11 @@ public class ReferenceFormatterTest {
     }
 
     @Test
+    public void doesNotAddAtPrefixToDotPrefixedPath() {
+        assertEquals(".env", ReferenceFormatter.formatRelativePath(".env"));
+    }
+
+    @Test
     public void returnsNullForEmptyRelativePath() {
         assertNull(ReferenceFormatter.formatRelativePath(""));
     }

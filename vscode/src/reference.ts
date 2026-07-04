@@ -5,7 +5,7 @@ export function toAiReference(relativePath: string): string | undefined {
     return undefined;
   }
 
-  return `@${normalized}`;
+  return normalized.startsWith('.') ? normalized : `@${normalized}`;
 }
 
 export function toSingleAiReference(copiedRelativePath: string): string | undefined {

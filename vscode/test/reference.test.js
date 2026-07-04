@@ -11,6 +11,10 @@ test('normalizes Windows separators', () => {
   assert.equal(toAiReference('src\\components\\Button.tsx'), '@src/components/Button.tsx');
 });
 
+test('does not add @ prefix to dot-prefixed paths', () => {
+  assert.equal(toAiReference('.env'), '.env');
+});
+
 test('returns undefined for an empty path', () => {
   assert.equal(toAiReference(''), undefined);
 });

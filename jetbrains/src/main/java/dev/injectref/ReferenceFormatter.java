@@ -13,7 +13,7 @@ final class ReferenceFormatter {
             return null;
         }
 
-        return "@" + normalized;
+        return normalized.startsWith(".") ? normalized : "@" + normalized;
     }
 
     static String formatAbsolutePath(String basePath, String filePath) {
