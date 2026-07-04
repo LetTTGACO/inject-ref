@@ -2,10 +2,10 @@
   "name": "inject-ref-vscode",
   "displayName": "Inject Ref",
   "description": "复制适合 AI 引用的项目相对路径。",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "publisher": "inject-ref",
   "engines": {
-    "vscode": "^1.125.0"
+    "vscode": "^1.100.0"
   },
   "categories": [
     "Other"
@@ -38,7 +38,7 @@
     "package": "npm run compile"
   },
   "devDependencies": {
-    "@types/vscode": "1.125.0",
+    "@types/vscode": "^1.100.0",
     "typescript": "6.0.3"
   }
 }
